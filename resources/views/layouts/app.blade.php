@@ -25,9 +25,10 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                @include('layouts.includes.navBar')
+                <!-- <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
-                </a>
+                </a> -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -80,7 +81,59 @@
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
+
+     
+
+      <!-- Modal -->
+       <div class="modal left fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+           <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+              <h6 class="modal-title" id="exampleModalLabel">POS</h6>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+               </div>
+                <div class="modal-body">
+
+                   @include('layouts.includes.sideBar') 
+
+                 </div>
+                  
+               </div>
+            </div>
+       </div>
+     <style>
+      .modal.left .modal-dialog{
+          position: absolute;
+          top: 0;
+          left: 0;
+          margin: 0;
+      }
+
+      .modal.left .modal-dialog.modal-sm{
+          max-width: 300px;
+      }
+
+      .modal.left .modal.content{
+          min-height: 100vh;
+          border: 0;
+      }
+
+       h6
+       {
+           font-family: Verdana, Tahoma, sans-serif;
+           font-size: 20px;
+           font-weight: bolder;
+           text-transform: uppercase;
+
+       }
+
+    
+     </style>
+
+
+</div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
