@@ -14,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('users.index');
+        $users = User::paginate(5);
+        return view('users.index',['users' =>$users]);
     }
 
     /**
@@ -80,7 +81,13 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $users = User::find($id);
+        if(!$users)
+        {
+          return back()->with('Error','User not found');
+        }
+        $users->update($request->all());
+        return back()->with('Success','Update Succesfully');
     }
 
     /**
@@ -91,6 +98,12 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $users = User::find($id);
+        if(!$users)
+        {
+          return back()->with('Error','User not found');
+        }
+        $users->delete();
+        return back()->with('Success','Deleted Succesfully');
     }
 }
