@@ -14,7 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::paginate(5);
+        return view('products.index',['products'=>$products]);
     }
 
     /**
@@ -35,7 +36,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Product::create($request->all());
+        return redirect()->back()->with('success','Product Added Succesfully');
     }
 
     /**
@@ -69,7 +71,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $product->update($request->all());
+        return redirect()->back()->with('success','Update Successful');
     }
 
     /**
@@ -80,6 +83,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->back()->with('success','Delete Successful');
     }
 }
